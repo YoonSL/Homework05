@@ -1,0 +1,246 @@
+body{
+    height:200%;
+}
+
+.sidebar{
+    position: fixed;    
+    height: 100vh;
+    width: 80px;
+    background-color: grey;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    color:white;
+}
+.navbar{
+    margin-bottom:15px;
+}
+.maintitle{
+    position:fixed;
+    margin-left: 80px;
+    background-color: rgb(40, 100, 212);
+    text-align:right;
+    color:white;
+    width:95%;
+    font-weight: 700;
+}
+.maintitle h1{
+    margin: 10px;
+    margin-right: 50px;
+    font-size : 30px;
+}
+#content{
+    position:fixed;
+    width:98%;
+    height:100%;
+    margin-left: 90px;
+    margin-top:66px;
+    transition: top 0.3s;
+}
+
+/* button attributes start */
+.print{
+    background:none;
+    border:none;
+    color:white;
+}
+.verify{
+    background:none;
+    border:none;
+    color:white;
+}
+.lookup{
+    background:none;
+    border:none;
+    color:white;
+}
+.contains{
+    background:none;
+    border:none;
+    color:white;
+}
+
+.update{
+    background:none;
+    border:none;
+    color:white;
+}
+
+.list{
+    background:none;
+    border:none;
+    color:white;
+}
+
+.add{
+    background:none;
+    border:none;
+    color:white;
+}
+
+.delete{
+    background:none;
+    border:none;
+    color:white;
+}
+/* button attributes end */
+
+h1{
+    font-size: 20px;
+    font-weight: 700;
+}
+.innerVerify{
+    font-size:20px;
+    background:none;
+    border:none;
+    color:rgb(141, 141, 141);
+}
+
+input{
+    border-radius: 30px;
+    border:3px solid rgb(124, 124, 124);
+    width:500px;
+    height:30px;
+    margin:10px;
+    font-size:15px;
+    text-align: center;
+}
+
+.pageText{
+    border-top: 2px solid  rgb(124, 124, 124);
+    text-align:center;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 30px;
+    padding-top: 30px;
+    color: rgb(141, 141, 141);
+}
+
+/* content attributes start*/
+#lookupInfo{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#updateInfo{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#trueOrFalse{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#containsInfo{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#addInfo{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+/* content attributes end*/
+
+.center{
+    display:flex;
+    justify-content: center;
+    align-items:center; 
+}
+
+.greyWord{
+    font-size: 20px;
+    text-align : right;
+    color: rgba(126, 126, 126, 0.7);
+
+}
+
+.innerButtons{
+    background:none;
+    border:none;
+    color:rgba(126, 126, 126, 0.7);
+    font-size: 20px;
+}
+
+#innerUpdate{
+    position: absolute;
+    left:50%;
+    background:none;
+    border:none;
+    color:rgba(126, 126, 126, 0.7);
+    font-size: 20px;
+}
+#innerAdd{
+    position: absolute;
+    left:50%;
+    background:none;
+    border:none;
+    color:rgba(126, 126, 126, 0.7);
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .body{
+    height: 100%;
+}
+main{
+    display:grid;
+    grid-template-rows: 2fr;
+    grid-template-columns: 50px 1fr;
+    height: 100%;
+    grid-gap: 10px;
+}
+.grid{
+    display:grid;
+    justify-content: center;
+    align-items: center;
+    height:  100%;
+    background-color: blue;
+}
+.navgrid{
+    display:grid;
+    grid-template-rows:7fr;
+    grid-template-columns: 50px;
+    height: 100%;
+    grid-gap:10px;
+
+} 
+ 
+.navi{
+    display:grid;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    background-color: grey;
+}
+
+.rowtwo{
+    display:grid;
+    grid-row: span 2;
+    grid-column: span 1;
+} */
