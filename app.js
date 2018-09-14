@@ -6,9 +6,9 @@ let employee = {
 
 }
 
-const render = function (command) {
+const render = function (where,command) {
   let content = command;
-  $('#content').html(content);
+  $(where).html(content);
 }
 
 const print = function (event) {
@@ -16,7 +16,7 @@ const print = function (event) {
   $('#content').empty();
   let content = '';
   employee.empList.map(e => content += `<h1>${e.name}</h1><h1>${e.officeNum}</h1><h1>${e.phoneNum}</h1>`);
-  render(content);
+  render('#content',content);
 }
 
 
@@ -25,14 +25,14 @@ const verify = function (event) {
   $('#content').empty();
   let content = (`<div class = center><input id = "verifyInput" placeholder="Who would you like to verify?"/><button class = "innerButtons" id = "innerVerify">Verify</button></div>`) +
     (`<h1 class = "pageText" id = "verifyText">EmployeeFound</h1>`) + (`</br><h1 id = "trueOrFalse"></h1>`);
-  render(content);
+  render('#content',content);
 
   const yesNo = function (event) {
     event.preventDefault();
     const verifyWord = $('#verifyInput').val();
     const verifyWordCase = verifyWord.toLowerCase();
     const verifyBoolean = employee.empList.some(e => e.name.toLowerCase() === verifyWordCase);
-    $('#trueOrFalse').text(verifyBoolean);
+    render('#trueOrFalse',verifyBoolean);
   }
 
   $('#innerVerify').onClick('click', yesNo);
