@@ -2,45 +2,30 @@
 let employee = {
   empList: employeeList,
   comList: commandList
+
+
 }
 
-// const render = function(){
-//   let htmlContent = '<h1> RegistrantList </h1>';
-//   employee = {...employee}
-//   employee.empList.name.forEach(e => htmlContent += `<p> ${e} </p>`);
-//   $('#content').html(htmlContent);
-// }
-
-// render();
-
-//This function is called when the print button @nav bar is clicked.
-//It prints out the list of employees.
+const render = function (command) {
+  let content = command;
+  $('#content').html(content);
+}
 
 const print = function (event) {
   event.preventDefault();
   $('#content').empty();
-  for (let i = 0; i < employeeList.length; i++) {
-
-    $('#content').append(`<h1>${employee.empList[i].name}</h1>`);
-    $('#content').append(`<h1>${employee.empList[i].officeNum}</h1>`);
-    $('#content').append(`<h1>${employee.empList[i].phoneNum}</h1></br>`);
-  }
+  let content = '';
+  employee.empList.map(e => content += `<h1>${e.name}</h1><h1>${e.officeNum}</h1><h1>${e.phoneNum}</h1>`);
+  render(content);
 }
 
-//This function is called when the verify button @nav bar is clicked.
-//changes the content area to verify section.
 
 const verify = function (event) {
   event.preventDefault();
   $('#content').empty();
-
-  $('#content').append(`<div class = center><input id = "verifyInput" placeholder="Who would you like to verify?"/><button class = "innerButtons" id = "innerVerify">Verify</button></div>`);
-  $('#content').append(`<h1 class = "pageText" id = "verifyText"></h1>`);
-  $('#content').append(`</br><h1 id = "trueOrFalse"></h1>`)
-  $('#verifyText').text('EmployeeFound');
-
-  //This function is called when the Verify button @ content is clicked.
-  //It checks the if the employee a user is looking for exists and prints true or false.
+  let content = (`<div class = center><input id = "verifyInput" placeholder="Who would you like to verify?"/><button class = "innerButtons" id = "innerVerify">Verify</button></div>`) +
+    (`<h1 class = "pageText" id = "verifyText">EmployeeFound</h1>`) + (`</br><h1 id = "trueOrFalse"></h1>`);
+  render(content);
 
   const yesNo = function (event) {
     event.preventDefault();
@@ -53,53 +38,43 @@ const verify = function (event) {
   $('#innerVerify').onClick('click', yesNo);
 }
 
-//This function is called when the lookup button @nav bar is clicked.
-//changes the content area to lookup section.
 
 const lookup = function (event) {
   event.preventDefault();
   $('#content').empty();
-  $('#content').append(`<div class = "center"><input id = "lookupInput" placeholder="Who would you like to lookup?"/><button class = "innerButtons" id = "innerLookup">Lookup</button></div>`);
-  $('#content').append(`<h1 class = "pageText" id = "lookupText">EmployeeFound</h1>`);
-  $('#content').append(`<h1 id = "lookupInfo"></h1>`)
-  $('#lookupText').text('');
-
-  //This function is called when the Lookup button @content is clicked.
-  //It checks the if the employee a user is looking for exists and shows the user information of the search.
+  let content = (`<div class = "center"><input id = "lookupInput" placeholder="Who would you like to lookup?"/><button class = "innerButtons" id = "innerLookup">Lookup</button></div>`) +
+    (`<h1 class = "pageText" id = "lookupText">EmployeeFound</h1>`) + (`<h1 id = "lookupInfo"></h1>`)
+  render(content);
 
   const lookupWho = function (event) {
     event.preventDefault();
     const lookupWord = $('#lookupInput').val();
     const lookupWordCase = lookupWord.toLowerCase();
-    const lookupInformation = employee.empList.filter(e => e.name.toLowerCase() === lookupWordCase);
+    let lookupInformation = employee.empList.filter(e => e.name.toLowerCase() === lookupWordCase);
 
-    if (lookupInformation.length == 0) {
-      $('#lookupInfo').text('No one of that name');
+    if (lookupInformation.length) {
+      let lookupContent ='';
+      lookupInformation.map(e => lookupContent += `<h1>${e.name}</h1><h1>${e.officeNum}</h1><h1>${e.phoneNum}</h1>`);
+      $('#lookupInfo').html(lookupContent);
     } else {
-      const lookupValue = Object.values(lookupInformation[0]);
-      $('#lookupInfo').text(lookupValue[0]);
-      $('#lookupInfo').append(`</br>${lookupValue[1]}`);
-      $('#lookupInfo').append(`</br>${lookupValue[2]}`);
+      $('#lookupInfo').text('No one of that name');
     }
   }
-
   $('#innerLookup').onClick('click', lookupWho);
 }
 
-//This function is called when the contains button @nav bar is clicked.
-//changes the content area to contains section.
+
+
+
 
 const contains = function (event) {
   event.preventDefault();
   $('#content').empty();
-  $('#content').append(`<div class = "center"><input id = "containsInput" placeholder="Which charaters are in the name?"/><button class = "innerButtons" id = "innerContains">Contains</button></div>`);
-  $('#content').append(`<h1 class = "pageText" id = "containsText">EmployeeFound</h1>`);
-  $('#content').append(`<h1 id = "containsInfo"></h1>`)
-  $('#containsText').text('');
 
+  let content = (`<div class = "center"><input id = "containsInput" placeholder="Which charaters are in the name?"/><button class = "innerButtons" id = "innerContains">Contains</button></div>`) +
+  (`<h1 class = "pageText" id = "containsText"></h1>`)+(`<h1 id = "containsInfo"></h1>`)
 
-  //This function is called when the Contains button @content is clicked.
-  //It checks the if the employee a user is looking with string value exists and shows the user information of the search.
+  render(content);
 
   const containsWho = function (event) {
     event.preventDefault();
@@ -207,35 +182,35 @@ const add = function (event) {
   $('#innerAdd').onClick('click', addWho);
 }
 
-const deletes = function(event){
+const deletes = function (event) {
+  event.preventDefault();
+  $('#content').empty();
+  $('#content').append(`<div class = "center"><input id = "deleteInput" placeholder="Who would you like to delete?"/><button class = "innerButtons" id = "innerDelete">Delete</button></div>`);
+  $('#content').append(`<h1 class = "pageText" id = "deleteText">EmployeeFound</h1>`);
+  $('#content').append(`<h1 id = "deleteInfo"></h1>`)
+  $('#deleteText').text('');
+
+  //This function is called when the Lookup button @content is clicked.
+  //It checks the if the employee a user is looking for exists and shows the user information of the search.
+
+  const deleteWho = function (event) {
     event.preventDefault();
-    $('#content').empty();
-    $('#content').append(`<div class = "center"><input id = "deleteInput" placeholder="Who would you like to delete?"/><button class = "innerButtons" id = "innerDelete">Delete</button></div>`);
-    $('#content').append(`<h1 class = "pageText" id = "deleteText">EmployeeFound</h1>`);
-    $('#content').append(`<h1 id = "deleteInfo"></h1>`)
-    $('#deleteText').text('');
-  
-    //This function is called when the Lookup button @content is clicked.
-    //It checks the if the employee a user is looking for exists and shows the user information of the search.
-  
-    const deleteWho = function (event) {
-      event.preventDefault();
-      const deleteWord = $('#deleteInput').val();
-      const deleteWordCase = deleteWord.toLowerCase();
-  
-      for (let i = 0; i < employeeList.length; i++) {
-        const deleteName = employee.empList[i].name;
-        if (deleteName.toLowerCase() === deleteWordCase) {
-          
-          delete employeeList[i].name;
-          delete employeeList[i].officeNum;
-          delete employeeList[i].phoneNum;
-        }
+    const deleteWord = $('#deleteInput').val();
+    const deleteWordCase = deleteWord.toLowerCase();
+
+    for (let i = 0; i < employeeList.length; i++) {
+      const deleteName = employee.empList[i].name;
+      if (deleteName.toLowerCase() === deleteWordCase) {
+
+        delete employeeList[i].name;
+        delete employeeList[i].officeNum;
+        delete employeeList[i].phoneNum;
       }
     }
-  
-    $('#innerDelete').onClick('click', deleteWho);
   }
+
+  $('#innerDelete').onClick('click', deleteWho);
+}
 
 //This function is called when the list button @nav bar is clicked.
 //changes the content area to list section.
