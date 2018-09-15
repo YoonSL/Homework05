@@ -52,18 +52,18 @@ let employee = {
   contains: function (event) {
     event.preventDefault();
     $('#content').empty();
-  
+
     let content = (`<div class = "center"><input id = "containsInput" placeholder="Which charaters are in the name?"/><button class = "innerButtons" id = "innerContains">Contains</button></div>`) +
       (`<h1 class = "pageText" id = "containsText"></h1>`) + (`<h1 id = "containsInfo"></h1>`)
-  
+
     render('#content', content);
-  
+
     const containsWho = function (event) {
       event.preventDefault();
       $('#containsInfo').empty();
       const containsWord = $('#containsInput').val();
       const containsInformation = employee.empList.filter(e => e.name.toLowerCase().includes(containsWord.toLowerCase()));
-  
+
       if (containsInformation) {
         let infoContain = '';
         containsInformation.map(e => infoContain += `<h1>${e.name}</h1><h1>${e.officeNum}</h1><h1>${e.phoneNum}</h1>`)
@@ -73,6 +73,43 @@ let employee = {
       }
     }
     $('#innerContains').onClick('click', containsWho);
+  },
+  update: function (event) {
+    event.preventDefault();
+    $('#content').empty();
+  
+    let content = (`<div class = "center"> <p class = "greyWord">Name</p> <input id = "updateName"/></div>`) +
+      (`<div class = "center"> <p class = "greyWord">Number</p> <input id = "updateOffNum"/></div>`) +
+      (`<div class = "center"> <p class = "greyWord">Phone</p> <input id = "updatePhoneNum"/></div>`) +
+      (`<button id = "innerUpdate"> Update </button><br/>`) +
+      (`<h1 class = "pageText" id = "updateText"></h1>`) +
+      (`<h1 id = "updateInfo"></h1>`);
+  
+    render(`#content`, content);
+  
+    const updateWho = function (event) {
+      event.preventDefault();
+      $('#updateInfo').empty();
+      let updateName = $('#updateName').val();
+      let updateOff = $('#updateOffNum').val();
+      let updatePhone = $('#updatePhoneNum').val();
+  
+      const containList = employee.empList.filter(e => e.name.toLowerCase() === updateName.toLowerCase());
+      const containName = containList.map(e => e.name.toLowerCase());
+      const updateNameLower = updateName.toLowerCase();
+      console.log(containName[0]);
+      console.log(updateNameLower);
+  
+      employee.empList.forEach(e => {
+        if (e.name.toLowerCase() === updateName.toLowerCase()) {
+          e.officeNum = updateOff;
+          e.phoneNum = updatePhone;
+          const infoUpdate = `<h1>${e.name}</h1><h1>#${e.officeNum}</h1><h1>${e.phoneNum}</h1>`;
+          render('#updateInfo', infoUpdate);
+        }
+      });
+    }
+    $('#innerUpdate').onClick('click', updateWho);
   }
 }
 
@@ -89,48 +126,6 @@ const render = function (where, command) {
 //This function is called when the update button @nav bar is clicked.
 //changes the content area to update section.
 
-const update = function (event) {
-  event.preventDefault();
-  $('#content').empty();
-
-  let content = (`<div class = "center"> <p class = "greyWord">Name</p> <input id = "updateName"/>`)+
-  (`<div class = "center"> <p class = "greyWord">Number</p> <input id = "updateOffNum"/>`)+
-  (`<div class = "center"> <p class = "greyWord">Phone</p> <input id = "updatePhoneNum"/>`)+
-  (`<button id = "innerUpdate"> Update </button>`)+
-  (`<h1 class = "pageText" id = "updateText"></h1>`)+
-  (`<h1 id = "updateInfo"></h1>`);
-
-  render(`#content`,content);
-
-  //This function is called when the Update button @content is clicked.
-  //It checks the if the employee a user is looking for and takes an input of the changed information and updates it.
-
-  const updateWho = function (event) {
-    event.preventDefault();
-    $('#updateInfo').empty();
-    let updateName = $('#updateName').val();
-    let updateOff = $('#updateOffNum').val();
-    let updatePhone = $('#updatePhoneNum').val();
-
-    let updateNameCase = updateName.toLowerCase();
-
-    for (let i = 0; i < employeeList.length; i++) {
-      const containName = employee.empList[i].name;
-      const containNameCase = containName.toLowerCase();
-
-      if (updateNameCase === containNameCase) {
-        employee.empList[i].officeNum = '#' + updateOff;
-        employee.empList[i].phoneNum = updatePhone;
-
-        $('#updateInfo').text(employee.empList[i].name);
-        $('#updateInfo').append(`</br>${employee.empList[i].officeNum}`);
-        $('#updateInfo').append(`</br>${employee.empList[i].phoneNum}`);
-
-      }
-    }
-  }
-  $('#innerUpdate').onClick('click', updateWho);
-}
 
 //This function is called when the add button @nav bar is clicked.
 //changes the content area to add section.
@@ -138,9 +133,11 @@ const update = function (event) {
 const add = function (event) {
   event.preventDefault();
   $('#content').empty();
-  $('#content').append(`<div class = "center"> <p class = "greyWord">Name</p> <input id = "addName"/>`);
-  $('#content').append(`<div class = "center"> <p class = "greyWord">Number</p> <input id = "addOffNum"/>`);
-  $('#content').append(`<div class = "center"> <p class = "greyWord">Phone</p> <input id = "addPhoneNum"/>`);
+  const content = (`<div class = "center"> <p class = "greyWord">Name</p> <input id = "addName"/></div>`)+
+  
+  $('#content').append;
+  $('#content').append(`<div class = "center"> <p class = "greyWord">Number</p> <input id = "addOffNum"/></div>`);
+  $('#content').append(`<div class = "center"> <p class = "greyWord">Phone</p> <input id = "addPhoneNum"/></div>`);
   $('#content').append(`<button id = "innerAdd"> Add </button>`);
   $('#content').append(`<h1 class = "pageText" id = "addText">EmployeeFound</h1>`);
   $('#content').append(`<h1 id = "addInfo"></h1>`)
@@ -219,7 +216,7 @@ $('.print').onClick('click', employee.print);
 $('.verify').onClick('click', employee.verify);
 $('.lookup').onClick('click', employee.lookup);
 $('.contains').onClick('click', employee.contains);
-$('.update').onClick('click', update);
+$('.update').onClick('click', employee.update);
 $('.add').onClick('click', add);
 $('.delete').onClick('click', deletes);
 $('.list').onClick('click', list);
