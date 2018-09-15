@@ -10,7 +10,6 @@ let employee = {
     employee.empList.map(e => content += `<h1>${e.name}</h1><h1>${e.officeNum}</h1><h1>${e.phoneNum}</h1>`);
     render('#content', content);
   },
-
   verify: function (event) {
     event.preventDefault();
     $('#content').empty();
@@ -27,12 +26,11 @@ let employee = {
     }
     $('#innerVerify').onClick('click', yesNo);
   },
-
   lookup: function (event) {
     event.preventDefault();
     $('#content').empty();
     let content = (`<div class = "center"><input id = "lookupInput" placeholder="Who would you like to lookup?"/><button class = "innerButtons" id = "innerLookup">Lookup</button></div>`) +
-      (`<h1 class = "pageText" id = "lookupText"></h1>`) + (`<h1 id = "lookupInfo"></h1>`)
+      (`<h1 class = "pageText" id = "lookupText"></h1>`) + (`<h1 id = "lookupInfo"></h1>`);
     render('#content', content);
 
     const lookupWho = function (event) {
@@ -76,8 +74,6 @@ let employee = {
     }
     $('#innerContains').onClick('click', containsWho);
   }
-  
-
 }
 
 const render = function (where, command) {
@@ -96,13 +92,15 @@ const render = function (where, command) {
 const update = function (event) {
   event.preventDefault();
   $('#content').empty();
-  $('#content').append(`<div class = "center"> <p class = "greyWord">Name</p> <input id = "updateName"/>`);
-  $('#content').append(`<div class = "center"> <p class = "greyWord">Number</p> <input id = "updateOffNum"/>`);
-  $('#content').append(`<div class = "center"> <p class = "greyWord">Phone</p> <input id = "updatePhoneNum"/>`);
-  $('#content').append(`<button id = "innerUpdate"> Update </button>`);
-  $('#content').append(`<h1 class = "pageText" id = "updateText">EmployeeFound</h1>`);
-  $('#content').append(`<h1 id = "updateInfo"></h1>`)
-  $('#updateText').text('');
+
+  let content = (`<div class = "center"> <p class = "greyWord">Name</p> <input id = "updateName"/>`)+
+  (`<div class = "center"> <p class = "greyWord">Number</p> <input id = "updateOffNum"/>`)+
+  (`<div class = "center"> <p class = "greyWord">Phone</p> <input id = "updatePhoneNum"/>`)+
+  (`<button id = "innerUpdate"> Update </button>`)+
+  (`<h1 class = "pageText" id = "updateText"></h1>`)+
+  (`<h1 id = "updateInfo"></h1>`);
+
+  render(`#content`,content);
 
   //This function is called when the Update button @content is clicked.
   //It checks the if the employee a user is looking for and takes an input of the changed information and updates it.
