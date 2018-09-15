@@ -1,18 +1,25 @@
 let employee = {
     empList: employeeList,
-    comList: commandList
+    comList: commandList,
+
+    print : function() {
+        $('#content').empty();
+        let content = '';
+        employee.empList.map(e => content += `<h1>${e.name}</h1><h1>${e.officeNum}</h1><h1>${e.phoneNum}</h1>`);
+        render(content);
+    }
 }
 const render = function (command) {
     let content = command;
     $('#content').html(content);
 }
 
-const print = function() {
-    $('#content').empty();
-    let content = '';
-    employee.empList.map(e => content += `<h1>${e.name}</h1><h1>${e.officeNum}</h1><h1>${e.phoneNum}</h1>`);
-    render(content);
-}
+// const print = function() {
+//     $('#content').empty();
+//     let content = '';
+//     employee.empList.map(e => content += `<h1>${e.name}</h1><h1>${e.officeNum}</h1><h1>${e.phoneNum}</h1>`);
+//     render(content);
+// }
 
 const verify = function (event) {
     event.preventDefault();
@@ -37,11 +44,11 @@ const verify = function (event) {
   
 
   
-$('.print').onClick('click', print);
+$('.print').onClick('click', employee.print);
 $('.verify').onClick('click', verify);
-$('.lookup').onClick('click', lookup);
-$('.contains').onClick('click', contains);
-$('.update').onClick('click', update);
-$('.add').onClick('click', add);
-$('.delete').onClick('click', deletes);
-$('.list').onClick('click', list);
+// $('.lookup').onClick('click', lookup);
+// $('.contains').onClick('click', contains);
+// $('.update').onClick('click', update);
+// $('.add').onClick('click', add);
+// $('.delete').onClick('click', deletes);
+// $('.list').onClick('click', list);

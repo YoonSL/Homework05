@@ -1,103 +1,94 @@
 
 let employee = {
   empList: employeeList,
-  comList: commandList
+  comList: commandList,
 
+  print: function (event) {
+    event.preventDefault();
+    $('#content').empty();
+    let content = '';
+    employee.empList.map(e => content += `<h1>${e.name}</h1><h1>${e.officeNum}</h1><h1>${e.phoneNum}</h1>`);
+    render('#content', content);
+  },
+
+  verify: function (event) {
+    event.preventDefault();
+    $('#content').empty();
+    let content = (`<div class = center><input id = "verifyInput" placeholder="Who would you like to verify?"/><button class = "innerButtons" id = "innerVerify">Verify</button></div>`) +
+      (`<h1 class = "pageText" id = "verifyText">EmployeeFound</h1>`) + (`</br><h1 id = "trueOrFalse"></h1>`);
+    render('#content', content);
+
+    const yesNo = function (event) {
+      event.preventDefault();
+      const verifyWord = $('#verifyInput').val();
+      const verifyWordCase = verifyWord.toLowerCase();
+      const verifyBoolean = employee.empList.some(e => e.name.toLowerCase() === verifyWordCase);
+      render('#trueOrFalse', verifyBoolean);
+    }
+    $('#innerVerify').onClick('click', yesNo);
+  },
+
+  lookup: function (event) {
+    event.preventDefault();
+    $('#content').empty();
+    let content = (`<div class = "center"><input id = "lookupInput" placeholder="Who would you like to lookup?"/><button class = "innerButtons" id = "innerLookup">Lookup</button></div>`) +
+      (`<h1 class = "pageText" id = "lookupText"></h1>`) + (`<h1 id = "lookupInfo"></h1>`)
+    render('#content', content);
+
+    const lookupWho = function (event) {
+      event.preventDefault();
+      const lookupWord = $('#lookupInput').val();
+      const lookupWordCase = lookupWord.toLowerCase();
+      let lookupInformation = employee.empList.filter(e => e.name.toLowerCase() === lookupWordCase);
+
+      if (lookupInformation.length) {
+        let lookupContent = '';
+        lookupInformation.map(e => lookupContent += `<h1>${e.name}</h1><h1>${e.officeNum}</h1><h1>${e.phoneNum}</h1>`);
+        render('#lookupInfo', lookupContent);
+      } else {
+        render('#lookupInfo', 'No one of that name');
+      }
+    }
+    $('#innerLookup').onClick('click', lookupWho);
+  },
+  contains: function (event) {
+    event.preventDefault();
+    $('#content').empty();
+  
+    let content = (`<div class = "center"><input id = "containsInput" placeholder="Which charaters are in the name?"/><button class = "innerButtons" id = "innerContains">Contains</button></div>`) +
+      (`<h1 class = "pageText" id = "containsText"></h1>`) + (`<h1 id = "containsInfo"></h1>`)
+  
+    render('#content', content);
+  
+    const containsWho = function (event) {
+      event.preventDefault();
+      $('#containsInfo').empty();
+      const containsWord = $('#containsInput').val();
+      const containsInformation = employee.empList.filter(e => e.name.toLowerCase().includes(containsWord.toLowerCase()));
+  
+      if (containsInformation) {
+        let infoContain = '';
+        containsInformation.map(e => infoContain += `<h1>${e.name}</h1><h1>${e.officeNum}</h1><h1>${e.phoneNum}</h1>`)
+        render('#containsInfo', infoContain);
+      } else {
+        $('#containsInfo').text('No one of that name');
+      }
+    }
+    $('#innerContains').onClick('click', containsWho);
+  }
+  
 
 }
 
-const render = function (where,command) {
+const render = function (where, command) {
   let content = command;
   $(where).html(content);
 }
 
-const print = function (event) {
-  event.preventDefault();
-  $('#content').empty();
-  let content = '';
-  employee.empList.map(e => content += `<h1>${e.name}</h1><h1>${e.officeNum}</h1><h1>${e.phoneNum}</h1>`);
-  render('#content',content);
-}
-
-
-const verify = function (event) {
-  event.preventDefault();
-  $('#content').empty();
-  let content = (`<div class = center><input id = "verifyInput" placeholder="Who would you like to verify?"/><button class = "innerButtons" id = "innerVerify">Verify</button></div>`) +
-    (`<h1 class = "pageText" id = "verifyText">EmployeeFound</h1>`) + (`</br><h1 id = "trueOrFalse"></h1>`);
-  render('#content',content);
-
-  const yesNo = function (event) {
-    event.preventDefault();
-    const verifyWord = $('#verifyInput').val();
-    const verifyWordCase = verifyWord.toLowerCase();
-    const verifyBoolean = employee.empList.some(e => e.name.toLowerCase() === verifyWordCase);
-    render('#trueOrFalse',verifyBoolean);
-  }
-
-  $('#innerVerify').onClick('click', yesNo);
-}
-
-
-const lookup = function (event) {
-  event.preventDefault();
-  $('#content').empty();
-  let content = (`<div class = "center"><input id = "lookupInput" placeholder="Who would you like to lookup?"/><button class = "innerButtons" id = "innerLookup">Lookup</button></div>`) +
-    (`<h1 class = "pageText" id = "lookupText">EmployeeFound</h1>`) + (`<h1 id = "lookupInfo"></h1>`)
-  render(content);
-
-  const lookupWho = function (event) {
-    event.preventDefault();
-    const lookupWord = $('#lookupInput').val();
-    const lookupWordCase = lookupWord.toLowerCase();
-    let lookupInformation = employee.empList.filter(e => e.name.toLowerCase() === lookupWordCase);
-
-    if (lookupInformation.length) {
-      let lookupContent ='';
-      lookupInformation.map(e => lookupContent += `<h1>${e.name}</h1><h1>${e.officeNum}</h1><h1>${e.phoneNum}</h1>`);
-      $('#lookupInfo').html(lookupContent);
-    } else {
-      $('#lookupInfo').text('No one of that name');
-    }
-  }
-  $('#innerLookup').onClick('click', lookupWho);
-}
 
 
 
 
-
-const contains = function (event) {
-  event.preventDefault();
-  $('#content').empty();
-
-  let content = (`<div class = "center"><input id = "containsInput" placeholder="Which charaters are in the name?"/><button class = "innerButtons" id = "innerContains">Contains</button></div>`) +
-  (`<h1 class = "pageText" id = "containsText"></h1>`)+(`<h1 id = "containsInfo"></h1>`)
-
-  render(content);
-
-  const containsWho = function (event) {
-    event.preventDefault();
-    $('#containsInfo').empty();
-    const containsWord = $('#containsInput').val();
-    const containsWordCase = containsWord.toLowerCase();
-    const containsInformation = employee.empList.filter(e => e.name.toLowerCase().includes(containsWordCase));
-
-    if (containsInformation.length == 0) {
-      $('#containsInfo').text('No one of that name');
-    } else {
-      for (let i = 0; i < containsInformation.length; i++) {
-        const containsValue = Object.values(containsInformation[i]);
-        for (let j = 0; j < containsValue.length; j++) {
-          const containsValueNum = containsValue[j];
-          $('#containsInfo').append(`${containsValueNum}</br>`);
-        }
-      }
-    }
-  }
-
-  $('#innerContains').onClick('click', containsWho);
-}
 
 //This function is called when the update button @nav bar is clicked.
 //changes the content area to update section.
@@ -226,10 +217,10 @@ const list = function (event) {
   }
 }
 
-$('.print').onClick('click', print);
-$('.verify').onClick('click', verify);
-$('.lookup').onClick('click', lookup);
-$('.contains').onClick('click', contains);
+$('.print').onClick('click', employee.print);
+$('.verify').onClick('click', employee.verify);
+$('.lookup').onClick('click', employee.lookup);
+$('.contains').onClick('click', employee.contains);
 $('.update').onClick('click', update);
 $('.add').onClick('click', add);
 $('.delete').onClick('click', deletes);
