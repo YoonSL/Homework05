@@ -7,7 +7,7 @@ let employee = {
     event.preventDefault();
     $('#content').empty();
     let content = '';
-    employee.empList.map(e => content += `<h1>${e.name}</h1><h1>#${e.officeNum}</h1><h1>${e.phoneNum}</h1>`);
+    employee.empList.map(e => content += `<h1 class = 'positionText'>${e.name}</h1><h1 class = 'positionText'>#${e.officeNum}</h1><h1 class = 'positionText'>${e.phoneNum}</h1>`);
     render('#content', content);
   },
   verify: function (event) {
