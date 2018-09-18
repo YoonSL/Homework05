@@ -6,7 +6,7 @@ body{
     position: fixed;    
     height: 100vh;
     width: 150px;
-    background-color: grey;
+    background-color: rgb(85, 85, 85);
     display:flex;
     justify-content: center;
     align-items:center;
@@ -31,7 +31,6 @@ body{
 } */
 #content{
     position:fixed;
-    background-image: url('bckg.jpg');
     
     background-size: cover;
     background-position:100% 60%;
@@ -40,52 +39,68 @@ body{
     margin:20px 20px 20px 20px;
     margin-left: 175px;
     transition: top 0.3s;
+    z-index:10;
 }
-
+.background{
+    background-image: url('bckg.jpg');
+    opacity: .7;
+    z-index:0;
+    filter: alpha(opacity=80);
+}
 /* button attributes start */
 .print{
+
     background:none;
     border:none;
-    color:white;
+    color:rgb(122, 122, 122);
+    font-size: 18px;
+    
 }
 .verify{
     background:none;
     border:none;
-    color:white;
+    color:rgb(122, 122, 122);
+    font-size: 18px;
 }
 .lookup{
     background:none;
     border:none;
-    color:white;
+    color:rgb(122, 122, 122);   
+    font-size: 18px;
 }
 .contains{
     background:none;
     border:none;
-    color:white;
+    color:rgb(122, 122, 122);
+    font-size: 18px;
 }
 
 .update{
     background:none;
     border:none;
-    color:white;
+    color:rgb(122, 122, 122);
+    font-size: 18px;
 }
 
 .list{
     background:none;
     border:none;
-    color:white;
+    color:rgb(122, 122, 122);
+    font-size: 18px;
 }
 
 .add{
     background:none;
     border:none;
-    color:white;
+    color:rgb(122, 122, 122);
+    font-size: 18px;
 }
 
 .delete{
     background:none;
     border:none;
-    color:white;
+    color:rgb(122, 122, 122);
+    font-size: 18px;
 }
 /* button attributes end */
 
@@ -190,10 +205,29 @@ input{
     margin: 20px;
 }
 
+.fa-address-book{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
 
+#mainButton{
+    background:none;
+    border:none;
+    color:white;
+}
+#yellowText{
+    text-align:center;
+    color: yellow;
+    font-size: 18px;
+}
 
-
-
+/* #mainTitleText{
+    display:grid;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+} */
 
 
 

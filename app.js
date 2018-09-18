@@ -2,7 +2,13 @@
 let employee = {
   empList: employeeList,
   comList: commandList,
-
+  
+  main: function(event){
+    event.preventDefault();
+    $('#content').empty();
+    let content = `<h1 id = 'mainTitleText'>WELCOME TO <section id = 'yellowTitle'>SIMPLICITY</section></h1> <h2>The Minimalists Directory</h2>`;
+    render(`#content`,content);
+  },
   print: function (event) {
     event.preventDefault();
     $('#content').empty();
@@ -181,6 +187,7 @@ const render = function (where, command) {
   $(where).html(content);
 }
 
+$('#mainButton').onClick('click',employee.main);
 $('.print').onClick('click', employee.print);
 $('.verify').onClick('click', employee.verify);
 $('.lookup').onClick('click', employee.lookup);
