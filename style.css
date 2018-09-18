@@ -12,6 +12,26 @@ body{
     align-items:center;
     color:white;
 }
+#mainTitleText{
+    font-size:70px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    top:300px;
+}
+#yellowTitle{
+    color:yellow;
+}
+#smallTitle{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top:350px;
+    font-size:25px;
+}
 .navbar{
     margin-bottom:15px;
 }
@@ -43,9 +63,9 @@ body{
 }
 .background{
     background-image: url('bckg.jpg');
-    opacity: .7;
-    z-index:0;
-    filter: alpha(opacity=80);
+    background-color: rgba(126, 126, 126, 0.7);
+    z-index: 1;
+    
 }
 /* button attributes start */
 .print{
@@ -116,8 +136,8 @@ h1{
 }
 
 input{
-    border-radius: 30px;
-    border:3px solid rgb(124, 124, 124);
+    border-radius: 10px;
+    border:0px solid rgb(124, 124, 124);
     width:500px;
     height:30px;
     margin:10px;
@@ -138,37 +158,47 @@ input{
 /* content attributes start*/
 #lookupInfo{
     display:grid;
-    justify-content: center;
+    justify-content: left;
+    color:white;
+    margin-left:15px;
 }
 
 #updateInfo{
     display:grid;
-    justify-content: center;
+    justify-content: left;
+    color:white;
+    margin-left:15px;
     /* align-items: center; */
 }
 
 #trueOrFalse{
     display:flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
+    color:white;
+    margin-left:15px;
 }
 
 #containsInfo{
     display:grid;
-    justify-content: center;
+    justify-content: left;
+    color:white;
+    margin-left:15px;
 }
 
 #addInfo{
     display:grid;
-    justify-content: center;
+    justify-content: left;
+    color:white;
+    margin-left:15px;
     /* align-items: center; */
 }
 /* content attributes end*/
 
 .center{
     display:flex;
-    justify-content: center;
-    align-items:center; 
+    justify-content: left;
+    align-items:top;
 }
 
 .greyWord{
@@ -203,12 +233,19 @@ input{
 }
 .positionText{
     margin: 20px;
+    font-size:15px;
 }
 
 .fa-address-book{
     display: grid;
     justify-content: center;
     align-items: center;
+}
+.fa-search{
+    color:white;
+    display: grid;
+    justify-content: left;
+    align-items: left;
 }
 
 #mainButton{
@@ -222,6 +259,14 @@ input{
     font-size: 18px;
 }
 
+#allTopText{
+    font-size: 20px;
+    color:white;
+}
+
+#whiteColor{
+    color:white;
+}
 /* #mainTitleText{
     display:grid;
     justify-content: center;

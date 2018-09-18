@@ -6,21 +6,23 @@ let employee = {
   main: function(event){
     event.preventDefault();
     $('#content').empty();
-    let content = `<h1 id = 'mainTitleText'>WELCOME TO <section id = 'yellowTitle'>SIMPLICITY</section></h1> <h2>The Minimalists Directory</h2>`;
+    let content = `<h1 id = 'mainTitleText'>WELCOME TO <section id = 'yellowTitle'>
+    SIMPLICITY</section></h1> <h2 id = 'smallTitle'>The Minimalists Directory</h2>`;
     render(`#content`,content);
   },
   print: function (event) {
     event.preventDefault();
     $('#content').empty();
-    let content = '';
-    employee.empList.map(e => content += `<h1 class = 'positionText'>${e.name}</h1><h1 class = 'positionText'>#${e.officeNum}</h1><h1 class = 'positionText'>${e.phoneNum}</h1>`);
+    let content = `<h2 id = 'allTopText'>The Minimalists Directory</h2>`;
+    employee.empList.map(e => content += `<h1 class = 'positionText' id = 'whiteColor'>${e.name}</h1><h1 class = 'positionText' id = 'whiteColor'>#${e.officeNum}</h1>
+    <h1 class = 'positionText' id = 'whiteColor'>${e.phoneNum}</h1>`);
     render('#content', content);
   },
   verify: function (event) {
     event.preventDefault();
     $('#content').empty();
-    let content = (`<div class = center><input id = "verifyInput" placeholder="Who would you like to verify?"/><button class = "innerButtons" id = "innerVerify">Verify</button></div>`) +
-      (`<h1 class = "pageText" id = "verifyText">EmployeeFound</h1>`) + (`</br><h1 id = "trueOrFalse"></h1>`);
+    let content = (`<h2 id = 'allTopText'>The Minimalists Directory</h2>`)+(`<div class = center><input id = "verifyInput" placeholder="Who would you like to verify?"/><button class = "innerButtons" id = "innerVerify"><i class="fas fa-search"></i></button></div>`) +
+    (`</br><h1 id = "trueOrFalse"></h1>`);
     render('#content', content);
 
     const yesNo = function (event) {
@@ -35,8 +37,9 @@ let employee = {
   lookup: function (event) {
     event.preventDefault();
     $('#content').empty();
-    let content = (`<div class = "center"><input id = "lookupInput" placeholder="Who would you like to lookup?"/><button class = "innerButtons" id = "innerLookup">Lookup</button></div>`) +
-      (`<h1 class = "pageText" id = "lookupText"></h1>`) + (`<h1 id = "lookupInfo"></h1>`);
+    let content =  (`<h2 id = 'allTopText'>The Minimalists Directory</h2>`)+(`<div class = "center"><input id = "lookupInput" placeholder="Who would you like to lookup?"/>
+    <button class = "innerButtons" id = "innerLookup"><i class="fas fa-search"></i></button></div>`) +
+    (`<h1 id = "lookupInfo"></h1>`);
     render('#content', content);
 
     const lookupWho = function (event) {
@@ -59,8 +62,11 @@ let employee = {
     event.preventDefault();
     $('#content').empty();
 
-    let content = (`<div class = "center"><input id = "containsInput" placeholder="Which charaters are in the name?"/><button class = "innerButtons" id = "innerContains">Contains</button></div>`) +
-      (`<h1 class = "pageText" id = "containsText"></h1>`) + (`<h1 id = "containsInfo"></h1>`)
+    let content = (`<h2 id = 'allTopText'>The Minimalists Directory</h2>`)+
+    (`<div class = "center"><input id = "containsInput" placeholder="Which charaters are in the name?"/>
+    <button class = "innerButtons" id = "innerContains">
+    <i class="fas fa-search"></i></button></div>`) +
+    (`<h1 id = "containsInfo"></h1>`)
 
     render('#content', content);
 
@@ -84,11 +90,11 @@ let employee = {
     event.preventDefault();
     $('#content').empty();
   
-    let content = (`<div class = "center"> <p class = "greyWord">Name</p> <input id = "updateName"/></div>`) +
+    let content = (`<h2 id = 'allTopText'>The Minimalists Directory</h2>`)+
+      (`<div class = "center"> <p class = "greyWord">Name</p> <input id = "updateName"/></div>`) +
       (`<div class = "center"> <p class = "greyWord">Number</p> <input id = "updateOffNum"/></div>`) +
       (`<div class = "center"> <p class = "greyWord">Phone</p> <input id = "updatePhoneNum"/></div>`) +
-      (`<button id = "innerUpdate"> Update </button><br/>`) +
-      (`<h1 class = "pageText" id = "updateText"></h1>`) +
+      (`<button id = "innerUpdate"> <i class="fas fa-search"></i> </button><br/>`) +
       (`<h1 id = "updateInfo"></h1>`);
   
     render(`#content`, content);
@@ -120,11 +126,11 @@ let employee = {
   add: function (event) {
     event.preventDefault();
     $('#content').empty();
-    const content = (`<div class = "center"> <p class = "greyWord">Name</p> <input id = "addName"/></div>`)+
+    const content = (`<h2 id = 'allTopText'>The Minimalists Directory</h2>`)+
+    (`<div class = "center"> <p class = "greyWord">Name</p> <input id = "addName"/></div>`)+
     (`<div class = "center"> <p class = "greyWord">Number</p> <input id = "addOffNum"/></div>`)+
     (`<div class = "center"> <p class = "greyWord">Phone</p> <input id = "addPhoneNum"/></div>`)+
-    (`<button id = "innerAdd"> Add </button>`)+
-    (`<h1 class = "pageText" id = "addText"></h1>`)+
+    (`<button id = "innerAdd"> <i class="fas fa-search"></i> </button>`)+
     (`<h1 id = "addInfo"></h1>`)
   
     render(`#content`,content);
@@ -154,8 +160,10 @@ let employee = {
     event.preventDefault();
     
     $('#content').empty();
-    let content = (`<div class = "center"><input id = "deleteInput" placeholder="Who would you like to delete?"/><button class = "innerButtons" id = "innerDelete">Delete</button></div>`)+
-    (`<h1 class = "pageText" id = "deleteText"></h1>`);
+    let content = (`<h2 id = 'allTopText'>The Minimalists Directory</h2>`)+
+    (`<div class = "center"><input id = "deleteInput" placeholder="Who would you like to delete?"/>
+    <button class = "innerButtons" id = "innerDelete">
+    <i class="fas fa-search"></i></button></div>`);
     
     render(`#content`,content);
   
@@ -177,7 +185,7 @@ let employee = {
     event.preventDefault();
     $('#content').empty();
     let content = '';
-      employee.comList.map(e => content += `<h1>${e.commands}</h1><h1>${e.description}</h1><br/>`);
+      employee.comList.map(e => content += `<h1 id = 'whiteColor'>${e.commands}</h1><h1 id = 'whiteColor'>${e.description}</h1><br/>`);
       render('#content', content);
   }
 }
