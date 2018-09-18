@@ -91,10 +91,10 @@ let employee = {
     $('#content').empty();
   
     let content = (`<h2 id = 'allTopText'>The Minimalists Directory</h2>`)+
-      (`<div class = "center"> <p class = "greyWord">Name</p> <input id = "updateName"/></div>`) +
-      (`<div class = "center"> <p class = "greyWord">Number</p> <input id = "updateOffNum"/></div>`) +
-      (`<div class = "center"> <p class = "greyWord">Phone</p> <input id = "updatePhoneNum"/></div>`) +
-      (`<button id = "innerUpdate"> <i class="fas fa-search"></i> </button><br/>`) +
+      (`<div class = "center"> <p class = "greyWord"></p> <input id = "updateName" placeholder="Name?"/></div>`) +
+      (`<div class = "center"> <p class = "greyWord"></p> <input id = "updateOffNum" placeholder="Office Number?"/></div>`) +
+      (`<div class = "center"> <p class = "greyWord"></p> <input id = "updatePhoneNum" placeholder="Phone Number?"/></div>`) +
+      (`<button id = "innerUpdate"> <i class="fas fa-search" id = "positionSearch"></i> </button><br/>`) +
       (`<h1 id = "updateInfo"></h1>`);
   
     render(`#content`, content);
@@ -127,10 +127,10 @@ let employee = {
     event.preventDefault();
     $('#content').empty();
     const content = (`<h2 id = 'allTopText'>The Minimalists Directory</h2>`)+
-    (`<div class = "center"> <p class = "greyWord">Name</p> <input id = "addName"/></div>`)+
-    (`<div class = "center"> <p class = "greyWord">Number</p> <input id = "addOffNum"/></div>`)+
-    (`<div class = "center"> <p class = "greyWord">Phone</p> <input id = "addPhoneNum"/></div>`)+
-    (`<button id = "innerAdd"> <i class="fas fa-search"></i> </button>`)+
+    (`<div class = "center"> <p class = "greyWord"></p> <input id = "addName"/ placeholder="Name?"></div>`)+
+    (`<div class = "center"> <p class = "greyWord"></p> <input id = "addOffNum"/ placeholder="Office Number?"></div>`)+
+    (`<div class = "center"> <p class = "greyWord"></p> <input id = "addPhoneNum" placeholder="Phone Number?"/></div>`)+
+    (`<button id = "innerAdd"> <i class="fas fa-search" id = "positionSearch"></i> </button>`)+
     (`<h1 id = "addInfo"></h1>`)
   
     render(`#content`,content);
